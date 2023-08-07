@@ -18,7 +18,7 @@ public class TalkManager : MonoBehaviour
     
     void GenerateData()
     {
-        //기본 대사
+        //default Talk
         talkData.Add(1000, new string[] { "마을을 위한 일이야.:1"});
         talkData.Add(2000, new string[] { "뭔가 허전한 마음이 들어요..:1" });
         talkData.Add(8000, new string[] { "집나가면 고생이랬어요.:1"});
