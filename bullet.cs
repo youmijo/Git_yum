@@ -28,7 +28,6 @@ public class bullet : MonoBehaviour
         RaycastHit2D left = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
         if (left.collider != null)
         {
-        
             if (left.collider.tag == "Player")
             {
                 Debug.Log("attacked!");
@@ -51,4 +50,3 @@ public class bullet : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
