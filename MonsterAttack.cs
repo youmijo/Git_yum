@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor;
 using UnityEngine;
 
 public class MonsterAttack : MonoBehaviour
@@ -17,34 +16,11 @@ public class MonsterAttack : MonoBehaviour
     public LayerMask isLayer; //탐색할 레이어
     public float speed;
 
-
-    void Start()
-    {
-
-    }
-
-    //void Update()
-    //{
-    //    //if (curTime <= 0)
-    //    //{
-    //    //    Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
-    //    //    foreach (Collider2D collider in collider2Ds)
-    //    //    {
-    //    //        if (collider.CompareTag("Player"))
-    //    //        {
-    //    //            Instantiate(bullet, pos.position, transform.rotation);
-    //    //            collider.GetComponent<PlayerMove>().TakeDamage(1);
-    //    //        }
-    //    //        curTime = coolTime;
-    //    //    }
-    //    //}
-    //    //curTime -= Time.deltaTime;
-    //}
-
     void FixedUpdate()
     {
         RaycastHit2D left = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
         RaycastHit2D right = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
+        
         if (left.collider != null)
         {
             if (left.collider.tag == "Player")
@@ -85,50 +61,5 @@ public class MonsterAttack : MonoBehaviour
                 curTime -= Time.deltaTime;
             }
         }
-
-        //// 플레이어가 가까이 다가오면 따라가기
-        //RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
-        ////Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
-        //foreach (Collider2D collider in collider2Ds)
-        //{
-        //    if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance)
-        //    {
-        //        if (curTime <= 0)
-        //        {
-        //            GameObject bulletcopy = Instantiate(bullet, transform.position, transform.rotation);
-        //            curTime = coolTime;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        transform.position = Vector3.MoveTowards(transform.position, raycast.collider.transform.position, Time.deltaTime * speed);
-        //    }
-        //    curTime -= Time.deltaTime;
-        //}
-
-        //    Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
-        //    foreach (Collider2D collider in collider2Ds)
-        //    {
-        //        for (int i = 0; i < collider2Ds.Length; i++)
-        //        {
-        //            if (collider2Ds[i].tag == "Player")
-        //            {
-        //                if (curTime <= 0)
-        //                {
-        //                    Instantiate(bullet, pos.position, transform.rotation);
-        //                    collider.GetComponent<PlayerMove>().TakeDamage(1);
-        //                    curTime = coolTime;
-        //                }
-        //                curTime -= Time.deltaTime;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.blue;
-        //    Gizmos.DrawWireCube(pos.position, boxSize);
-        //}
     }
 }
