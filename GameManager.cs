@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         GameLoad();
+        
         questText.text = questManager.CheckQuest();
         Debug.Log(questManager.CheckQuest());
     }
@@ -40,7 +41,6 @@ public class GameManager : MonoBehaviour
             else
                 menuSet.SetActive(true);
         }
-           
     }
 
     public void Action(GameObject scanObj)
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         else
         {
             questTalkIndex = questManager.GetQuestTalkIndex(id);
-            talkData = talkManager.GetTalk(id + questTalkIndex, talkIndex);    //QuestTalkIndex + NPC Id = QuestData Id
+            talkData = talkManager.GetTalk(id + questTalkIndex, talkIndex); //QuestTalkIndex + NPC Id = QuestData Id
         }
 
         //End Talk
@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour
 
     public void GameRetry()
     {
-        //SceneManager.LoadScene("");
         GameOverSet.SetActive(false);
         player.SetActive(true);
         GameLoad();
@@ -151,8 +150,6 @@ public class GameManager : MonoBehaviour
         player.transform.position = new Vector3(x-6.8f, y-3, 0);
         questManager.questId = questId;
         questManager.questActionIndex = questActionIndex;
-
-
     }
 
     public void GameExit()
