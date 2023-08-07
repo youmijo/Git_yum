@@ -18,11 +18,9 @@ public class bullet : MonoBehaviour
         RaycastHit2D right = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if (right.collider != null)
         {
-           
-
             if (right.collider.tag == "Player")
             {
-                    Debug.Log("attacked!");
+                Debug.Log("attacked!");
             }
             DestroyBullet();
         }
@@ -33,7 +31,6 @@ public class bullet : MonoBehaviour
         
             if (left.collider.tag == "Player")
             {
-               
                 Debug.Log("attacked!");
             }
             DestroyBullet();
@@ -41,14 +38,14 @@ public class bullet : MonoBehaviour
 
         if (transform.rotation.y == 0)
         {
-            transform.Translate(transform.right * speed * Time.deltaTime);  //오른쪽으로 발사
+            transform.Translate(transform.right * speed * Time.deltaTime);     //오른쪽으로 발사
         }
         else
         {
-            transform.Translate(Vector2.right * -1f * speed * Time.deltaTime);    //왼쪽으로 발사
+            transform.Translate(Vector2.right * -1f * speed * Time.deltaTime); //왼쪽으로 발사
         }
-
     }
+    
     private void DestroyBullet()
     {
         Destroy(gameObject);
