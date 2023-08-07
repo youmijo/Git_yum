@@ -47,7 +47,7 @@ public class TypeEffect : MonoBehaviour
 
         isAnim = true;
 
-        Invoke("Effecting", interval); //한글자가 나오는 딜레이
+        Invoke("Effecting", interval); //한 글자가 나오는 딜레이
     }
 
     void Effecting()
