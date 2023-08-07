@@ -15,7 +15,6 @@ public class BtnType : MonoBehaviour
         {
             case BTNType.New:
                 SceneLoad.LoadSceneHandle("Play", 0);
-                //SceneManager.LoadScene("Loading");
                 break;
             case BTNType.Continue:
                 SceneLoad.LoadSceneHandle("Play", 1);
@@ -26,5 +25,4 @@ public class BtnType : MonoBehaviour
                 break;
         }
     }
-
 }
