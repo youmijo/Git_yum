@@ -79,13 +79,13 @@ public class QuestManager : MonoBehaviour
     {
         switch(questId) //걱정스러운 마음
         {
-            case 10:    //10은 퀘스트번호 (퀘스트1)
-                if (questActionIndex == 1)  // 퀘스트1에 연관되어있는 npc 1명하고 대화를 다 나눴을때
+            case 10:                                //10은 퀘스트번호 (퀘스트1)
+                if (questActionIndex == 1)          // 퀘스트1에 연관되어있는 npc 1명하고 대화를 다 나눴을때
                     questObject[0].SetActive(true); //퀘스트 오브젝트를 보이도록
                 break;
-            case 20:    //다음 퀘스트번호 (퀘스트2)로 넘어가면
+            case 20:                                //다음 퀘스트번호 (퀘스트2)로 넘어가면
                 if (questActionIndex == 1) 
-                    questObject[0].SetActive(false);    //안보이게
+                    questObject[0].SetActive(false);//안보이게
                 break;
         }
 
@@ -101,7 +101,7 @@ public class QuestManager : MonoBehaviour
                 break;
         }
 
-        switch (questId) //사랑하는 마음 마음
+        switch (questId) //사랑하는 마음
         {
             case 50:
                 if (questActionIndex == 1)
@@ -115,10 +115,6 @@ public class QuestManager : MonoBehaviour
 
         switch (questId) //가출 소년
         {
-            //case 0:
-            //    if (questActionIndex == 1)
-            //        questObject[5].SetActive(true);
-            //    break;
             case 60:
                 if (questActionIndex == 2)
                 {
@@ -127,19 +123,7 @@ public class QuestManager : MonoBehaviour
                 }
                 break;
         }
-
-        //switch (questId) //가출 소년(마을)
-        //{
-        //    case 60:
-        //        if (questActionIndex == 2)
-        //            questObject[6].SetActive(true);
-        //        break;
-        //    //case 70:
-        //    //    if (questActionIndex == 1)
-        //    //        questObject[5].SetActive(false);
-        //    //    break;
-        //}
-
+        
         switch (questId) //화난 마음
         {
             case 80:
