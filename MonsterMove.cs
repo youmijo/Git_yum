@@ -55,7 +55,6 @@ public class MonsterMove : MonoBehaviour
         //Recursive
         float nextThinkTime = Random.Range(2f, 5f);
         Invoke("Think", nextThinkTime);
-
     }
 
     void Turn() //턴 할 때 플립X가 바뀌도록
@@ -65,7 +64,6 @@ public class MonsterMove : MonoBehaviour
 
         CancelInvoke();
         Invoke("Think", 2);
-        //StartCoroutine(WaitCoroutine());
     }
 
     public void TakeDamage(int damage)
@@ -75,14 +73,6 @@ public class MonsterMove : MonoBehaviour
         hudText.GetComponent<DamageText>().damage = damage;
         Hp -= damage;
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.CompareTag("Object"))
-    //    {
-    //        Turn();
-    //    }
-    //}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
