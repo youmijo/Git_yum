@@ -42,5 +42,4 @@ public class Teleport : MonoBehaviour
         targetObj.transform.position = toObj.transform.position;
         Camera.main.GetComponent<MoveCamera>().ChangeLimit(mapNum);
     }
-
 }
