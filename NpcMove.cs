@@ -6,11 +6,11 @@ public class NpcMove : MonoBehaviour
 {
     public GameManager manager;
 
+    public int nextMove;
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriteRenderer;
-    public int nextMove;
-
+   
     public Transform pos;
     public Vector2 boxSize;
 
@@ -48,7 +48,7 @@ public class NpcMove : MonoBehaviour
     {
         if (collision.CompareTag("Object"))
         {
-            Debug.Log("충돌");
+            //Debug.Log("충돌");
             Turn();
         }
     }
@@ -56,7 +56,7 @@ public class NpcMove : MonoBehaviour
     void Think()
     {
         //Set Next Move
-        nextMove = manager.isAction ? 0 : Random.Range(-1, 2);  //대화 중일때는 멈추도록
+        nextMove = manager.isAction ? 0 : Random.Range(-1, 2); //대화 중일때는 움직임을 멈추도록
 
         //Animation
         anim.SetInteger("walkSpeed", nextMove);
@@ -68,7 +68,6 @@ public class NpcMove : MonoBehaviour
         //Recursive
         float nextThinkTime = Random.Range(1f, 3f);
         Invoke("Think", nextThinkTime);
-
     }
 
     void Turn() //턴 할 때 플립X가 바뀌도록
