@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        //Move Value, 상태변수를 사용하여 움직임을 제한
+        //상태변수를 사용하여 움직임을 제한
         h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
 
         //Check Button Down & Up
@@ -62,7 +62,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         //Animation
-        if (Mathf.Abs(rigid.velocity.x) < 0.3)  //절댓값
+        if (Mathf.Abs(rigid.velocity.x) < 0.3) //절댓값
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
                 foreach (Collider2D collider in collider2Ds)
                 {
                     if (collider.CompareTag("Monster"))
-                        {
+                    {
                         collider.GetComponent<MonsterMove>().TakeDamage(1);
                     }
                 }
@@ -91,7 +91,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         //Direction
-        if (hDown && h == 1)    //right
+        if (hDown && h == 1)       //right
             dirVec = Vector3.right;
         else if (hDown && h == -1) //left
             dirVec = Vector3.left;
@@ -109,14 +109,14 @@ public class PlayerMove : MonoBehaviour
         float h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
         rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
 
-        // Max Speed
+        //Max Speed
         if (rigid.velocity.x > maxSpeed)    //right
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if (rigid.velocity.x < maxSpeed * (-1)) //left
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
 
-        //Landing Platform 바닥이 있는지 없는지를 검사
-        if (rigid.velocity.y < 0)   //내려가는 속도 일 때만 Ray를 사용
+        //바닥이 있는지 없는지를 검사
+        if (rigid.velocity.y < 0) //내려가는 속도 일 때만 Ray를 사용
         {
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
@@ -130,10 +130,8 @@ public class PlayerMove : MonoBehaviour
         //Scan Object(Ray)
         Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayHit2 = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("Object"));
-        if (rayHit2.collider != null) //빔을 쏴서 맞은 사물이 있으면 정보가 있다
-        {
+        if (rayHit2.collider != null)
             scanObject = rayHit2.collider.gameObject;
-        }
         else
             scanObject = null;
     }
@@ -142,16 +140,16 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            OnDamaged(collision.transform.position);    //무적상태
+            OnDamaged(collision.transform.position); //무적상태
             Hp--;
             manager.UpdateHpImg(Hp);
+            
             if(Hp == 0)
-                {
-                    manager.GameOver();
+            {
+                manager.GameOver();
                 Hp = 5;
                 manager.UpdateHpImg(Hp);
             }
-            
         }
     }
 
@@ -177,10 +175,4 @@ public class PlayerMove : MonoBehaviour
         anim.SetTrigger("doDamaged");
         Invoke("OffDamaged", 1.5f);
     }
-
-    //public void TakeDamage(int damage)
-    //{
-    //    Hp -= damage;
-
-    //}
 }
