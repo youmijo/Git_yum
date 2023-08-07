@@ -34,5 +34,4 @@ public class MapName : MonoBehaviour
         else if (x == 6)
             mapName.text = "현재 위치: 시장";
     }
-    
 }
